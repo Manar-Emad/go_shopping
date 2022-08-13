@@ -5,7 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 
 
-Widget DefaultButton({
+Widget defaultButton({
   width = double.infinity,
   Color background = Colors.blue,
   required VoidCallback function,
@@ -57,12 +57,6 @@ Widget DefaultFormFeild({
       onTap: onTap,
       obscureText: isPassword,
       validator: validate,
-      //  validator: (String value) {
-      //     if (value.isEmpty) {
-      //       return 'email must not be empty';
-      //    }
-      //  return null;
-      // },
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: label,

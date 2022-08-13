@@ -59,7 +59,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Colors.white,
+        elevation: 0,
         actions: [
           DefaultTextButton(function:submit, text: 'SKIP'),
         ],

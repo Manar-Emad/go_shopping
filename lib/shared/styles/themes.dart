@@ -8,9 +8,9 @@ ThemeData darkTheme = ThemeData(
   primarySwatch: defaultColor,
 
   ///floatingActionButtonTheme
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Colors.deepOrange,
-  ),
+  // floatingActionButtonTheme: const FloatingActionButtonThemeData(
+  //   backgroundColor: Colors.deepOrange,
+  // ),
 
   ///AppBarTheme
   appBarTheme: AppBarTheme(
@@ -54,9 +54,9 @@ ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
 
   ///FloatingActionButtonThemeData
-  floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Colors.blue,
-  ),
+  // floatingActionButtonTheme: const FloatingActionButtonThemeData(
+  //   backgroundColor: Colors.blue,
+  // ),
 
   ///AppBarTheme
   appBarTheme: const AppBarTheme(
