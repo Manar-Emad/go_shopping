@@ -58,17 +58,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: [
-          DefaultTextButton(function:submit, text: 'SKIP'),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      //   actions: [
+      //    DefaultTextButton(function: (){
+      //             debugPrint('mmmmmmmmmmmmmm');
+      //             submit();}, text: 'SKIP'),
+      //   ],
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+             //   TextButton(onPressed: (){ debugPrint('hhhhhhh');}, child: Text('SKIP')),
+                DefaultTextButton(function: (){
+                  submit();
+                  debugPrint('mmmmmmmmmmmmmm');}, text: 'SKIP'),
+              ],
+            ),
             Expanded(
               child: PageView.builder(
                 itemBuilder: (context, index) =>
@@ -85,7 +96,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     });
                   }
                 },
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: boarding.length,
               ),
             ),
@@ -96,7 +107,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               children: [
                 SmoothPageIndicator(
                     controller: boardController,
-                    effect:  ExpandingDotsEffect(
+                    effect:  const ExpandingDotsEffect(
                       dotColor: Colors.grey,
                       activeDotColor: defaultColor,
                       dotHeight: 10,
@@ -105,24 +116,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       spacing: 5,
                     ),
                     count: boarding.length),
-                Spacer(),
+                const Spacer(),
                 FloatingActionButton(
                   onPressed: () {
                     if(islast){
                       submit();
-                      //هنا هيتحرك ع الصفحة اللي بعدها عادي ولكن لو رجعت هيرجع تاني للصفحة بتاع البوردنج ودي مينفعش تظهر غير ف الاول فقط
-                      // navigateTo(context, ShopLoginScreen());
-                      // عشان اتفادي دا هستخدم دي بعمل استبدال للصفحات اني اشيل القديمة واروح للجديدة
-                     // navigateAndFinish(context, ShopLoginScreen());
-                    }
+                      }
                     else{
 
                       boardController.nextPage(
-                        duration: Duration(microseconds: 750),
+                        duration: const Duration(microseconds: 750),
                         curve: Curves.fastLinearToSlowEaseIn);}
 
                   },
-                  child: Icon(Icons.arrow_forward_ios),
+                  child: const Icon(Icons.arrow_forward_ios),
                 ),
               ],
             ),
@@ -145,14 +152,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
           Text(
             '${model.title}',
-            style: TextStyle(fontSize: 24.0),
+            style: const TextStyle(fontSize: 24.0),
           ),
           const SizedBox(
             height: 15.0,
           ),
           Text(
             '${model.body}',
-            style: TextStyle(fontSize: 14.0),
+            style: const TextStyle(fontSize: 14.0),
           ),
           const SizedBox(
             height: 15.0,

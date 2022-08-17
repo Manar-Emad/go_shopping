@@ -3,6 +3,43 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+/// snackBar Widget
+snackBar({
+  context,
+  String? message,
+  required SnackBarStates state,
+}) {
+  return ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(message!),
+      duration: const Duration(seconds: 2),
+      backgroundColor: chooseSnackBarColor(state),
+      padding: const EdgeInsets.all(10),
+      shape:RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ) ,
+    ),
+  );
+}
+///enum for snackBar
+enum SnackBarStates{SUCCESS , ERROR ,WARNING}
+
+Color? chooseSnackBarColor(SnackBarStates state){
+  Color color;
+  switch(state){
+    case SnackBarStates.SUCCESS :
+      color= Colors.green;
+      break ;
+    case SnackBarStates.ERROR :
+      color= Colors.red;
+      break ;
+    case SnackBarStates.WARNING :
+      color= Colors.amber;
+      break ;
+
+  }
+  return color;
+}
 
 
 Widget defaultButton({
@@ -15,6 +52,10 @@ Widget defaultButton({
     Container(
       width: width,
       height: 40,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: background,
+      ),
       child: MaterialButton(
         onPressed: function,
         child: Text(
@@ -22,15 +63,11 @@ Widget defaultButton({
           style: const TextStyle(color: Colors.white),
         ),
       ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: background,
-      ),
     );
 
-Widget DefaultTextButton({required Function function, required String text}) =>
+Widget DefaultTextButton({required Function()? function, required String text}) =>
     TextButton(
-      onPressed: () {},
+      onPressed: function,
       child: Text(text.toUpperCase()),
     );
 
@@ -89,7 +126,8 @@ void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
     (Route<dynamic> route) => false);
 
 ///SHOW TOAST MESSAGE
-void showToast({required String text,required ToastStates state}){
+void showToast({required String text,required ToastStates state})
+{
   Fluttertoast.showToast(
       msg: text,
       toastLength: Toast.LENGTH_LONG,

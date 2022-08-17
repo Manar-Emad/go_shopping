@@ -1,3 +1,9 @@
+class NetworkConstants{
+  static String url='https://student.valuxapps.com/api/';
+
+}
+
+
 const LOGIN='login';
 
 const HOME='home';
